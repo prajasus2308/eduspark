@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduSpark | Online Learning</title>
+
+<style>
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  background: #f8f9fc;
+}
+
+/* ---------- NAVBAR ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0a3d91;
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a, nav button {
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  height: 90vh;
+  background: linear-gradient(to right, #0a3d91, #1976d2);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border: none;
+  background: white;
+  color: #0a3d91;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.grades span {
+  display: inline-block;
+  background: #0a3d91;
+  color: white;
+  padding: 10px 16px;
+  margin: 8px;
+  border-radius: 20px;
+}
+
+/* ---------- CTA ---------- */
+.cta {
+  background: #0a3d91;
+  color: white;
+}
+
+.cta button {
+  margin-top: 15px;
+  padding: 12px 30px;
+  border: none;
+  background: white;
+  color: #0a3d91;
+  border-radius: 6px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #03275a;
+  color: white;
+  padding: 15px;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 30px;
+  width: 320px;
+  border-radius: 8px;
+  position: relative;
+  animation: scaleUp 0.4s ease;
+}
+
+.modal-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-box button {
+  width: 100%;
+  padding: 10px;
+  background: #0a3d91;
+  color: white;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+/* ---------- ANIMATION ---------- */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.7); }
+  to { transform: scale(1); }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 80px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <h2>EduSpark</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#grades">Classes</a>
+    <button onclick="openModal()">Login</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero fade" id="home">
+  <h1>Live Online Classes for Curious Kids</h1>
+  <p>Grades 1–8 • Concept-Based Learning</p>
+  <button onclick="openModal()">Book Free Demo</button>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" class="fade">
+  <h2>Our Curriculum</h2>
+  <div class="cards">
+    <div class="card">Mathematics</div>
+    <div class="card">Science</div>
+    <div class="card">English</div>
+  </div>
+</section>
+
+<!-- GRADES -->
+<section id="grades" class="fade">
+  <h2>Classes We Teach</h2>
+  <div class="grades">
+    <span>Grade 1</span><span>Grade 2</span><span>Grade 3</span>
+    <span>Grade 4</span><span>Grade 5</span><span>Grade 6</span>
+    <span>Grade 7</span><span>Grade 8</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta fade">
+  <h2>Start Learning Today</h2>
+  <button onclick="openModal()">Enroll Now</button>
+</section>
+
+<footer>
+  © 2025 EduSpark | Resume Project by Pratyush Raj
+</footer>
+
+<!-- LOGIN / SIGNUP MODAL -->
+<div class="modal" id="authModal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">✖</span>
+    <h3 id="modalTitle">Login</h3>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Submit</button>
+    <p style="margin-top:10px;cursor:pointer;color:#0a3d91"
+       onclick="toggleAuth()">New user? Sign up</p>
+  </div>
+</div>
+
+<script>
+/* MODAL */
+function openModal() {
+  document.getElementById("authModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("authModal").style.display = "none";
+}
+
+function toggleAuth() {
+  const title = document.getElementById("modalTitle");
+  title.innerText =
+    title.innerText === "Login" ? "Sign Up" : "Login";
+}
+
+/* SCROLL ANIMATION */
+const fades = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+fades.forEach(fade => observer.observe(fade));
+</script>
+
+</body>
+</html>
